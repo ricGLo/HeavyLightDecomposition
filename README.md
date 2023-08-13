@@ -1,6 +1,21 @@
 # HeavyLightDecomposition
 
+
 Heavy Light Decomposition is a technique that allows to solve many problems related to queries on a tree. In this  repository we use this technique to compute the sum of the numbers on the simple path of two given nodes in the tree. Also we can update the values of nodes. The implementation consists on a single [C++ file](src/HLD.cpp).  
+
+# Table of Contents
+1. [Problem](#problem)
+    - [INPUT](#input)
+    - [OUTPUT](#output)
+2. [Implementation](#implementation)
+    - [DFS (Depth First Search)](#dfs-depth-first-search)
+    - [HLD (Heavy Light Decomposition)](#hld-heavy-light-decomposition)
+    - [Segment Tree](#segment-three)
+    - [Sum of Simple Path](#sum-of-a-simple-path)
+    - [Updates](#updates)
+3. [Complexity](#complexity)
+
+
 
 ## Problem
 
@@ -41,15 +56,9 @@ where the number inside each node is the value (weight) and the number outside i
 
 For each $P$ query print the sum of values in the simple path that links the two given nodes. Print a line break after each $P$ query.
 
-In the input example we need to sum up values from node $3$ to node $2$. The simple path consists on nodes:
-$$
-3,  9, 0, 5, 2
-$$
-Adding up the values of this nodes we have the output 
-$$
-40 + 9 + 81 + 11 + 18 = 159.
-$$
-Therefore the OUTPUT of our INPUT example will be 
+In the input example we need to sum up values from node $3$ to node $2$. The simple path consists on nodes: $3,  9, 0, 5, 2$
+Adding up the values of this nodes we have the output $40 + 9 + 81 + 11 + 18 = 159$.
+Therefore the OUTPUT for our INPUT example will be 
 ```shell
 159
 
@@ -119,7 +128,7 @@ In the next image we color the tree in a way that each path has its own color as
 
 It is worth mentioning that in order to choose which nodes form a path given a root of a path, we go down the via j = heaviest[j] until reaching a leaf node. 
 
-### [Segment Three](https://www.geeksforgeeks.org/segment-tree-data-structure/)
+### [Segment Tree](https://www.geeksforgeeks.org/segment-tree-data-structure/)
 
 After decomposing our tree we now construct the segment tree for the vector of the values of the nodes, sorted according to the vector HLD. This is, we construct a segment tree for vector whose entry $j$ es given by values[HLD[j]]. Recall that vector named values contains the integer inside each node. In this example:
 
